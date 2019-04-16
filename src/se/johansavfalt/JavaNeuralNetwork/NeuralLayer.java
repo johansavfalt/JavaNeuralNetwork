@@ -39,10 +39,31 @@ public class NeuralLayer {
 
 	}
 	
+	public static double[][] addBias(double[][] matrixA, double[] matrixB){
+		
+		for (int i = 0; i < matrixA.length; i++) {
+			for (int j = 0; j < matrixA[i].length; j++) {
+			
+				matrixA[i][j] += matrixB[i];
+				
+			}
+			
+		}
+		
+		return matrixA;
+		
+	}
+	
 	public static void main(String[] args) {
 
 		double[][] matrixA = {{1, 2, 3}, {4, 5, 6}};
 		double[][] matrixB = {{1}, {4}, {4}};
+		
+
+		double[][] matrixE = {{1, 1}, {1, 1}};
+		double[] matrixF = {1, 1};
+		
+		double[][] matrixg = addBias(matrixE, matrixF);
 		
 		
 		double[][] matrixC = matrixMultiplication(matrixA, matrixB);
