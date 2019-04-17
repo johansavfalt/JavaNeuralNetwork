@@ -1,5 +1,6 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
+import java.util.Arrays;
 
 class HelpFunctions {
 	
@@ -51,9 +52,19 @@ class HelpFunctions {
 		
 	}
 	
-	//public static double
-
+	public static double[] sigmoid(double[] resultZ) {
+		double[] activation = Arrays.copyOf(resultZ, resultZ.length);
+		
+		for (int i = 0; i < activation.length; i++) {
+			activation[i] = 1 / (1 + Math.exp(-resultZ[i]));
+		}
+		
+		return activation;
+		
+		
+	}
 }
+
 
 
 
@@ -66,7 +77,9 @@ public class NeuralLayer {
 		
 		double[] bias = {1, 1};
 		
-		double[] result = HelpFunctions.addBias(HelpFunctions.matrixMultiplication(weights, input),bias);
+		double[] result = HelpFunctions.sigmoid(
+				HelpFunctions.addBias(
+						HelpFunctions.matrixMultiplication(weights, input),bias));
 		
 		for (int i = 0; i < result.length; i++) {
 				System.out.println(result[i]);
