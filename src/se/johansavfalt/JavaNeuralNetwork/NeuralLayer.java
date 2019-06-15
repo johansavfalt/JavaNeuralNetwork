@@ -3,6 +3,8 @@ package se.johansavfalt.JavaNeuralNetwork;
 import java.util.Arrays;
 
 class HelpFunctions {
+
+	//TODO should move all this into a matrix class
 	
 	public static double[] matrixMultiplication(double[][] matrixA, double[][] matrixB){
 
@@ -65,10 +67,81 @@ class HelpFunctions {
 	}
 }
 
+class Matrix{
 
+	private final int inputs;
+	private final int units;
+	private final double[][] data;
+
+	public Matrix(int inputs, int units, double[][] data){
+		this.inputs = inputs;
+		this.units = units;
+		this.data = new double[inputs][units];
+
+	}
+
+	private void init_random_values(){
+		for (int i = 0; i < inputs ; i++) {
+			for (int j = 0; j < units ; j++) {
+				data[i][j] = Math.random();
+			}
+		}
+	}
+
+	private double[] matrixMultiplication(double[][] matrixB){
+		Matrix matrixA = this;
+
+		int matrixA_rows = matrixA.inputs;
+		int matrixA_cols = matrixA.units;
+
+		// TODO make a Matrix class?
+		int matrixB_rows = matrixB.length;
+		int matrixB_cols = matrixB[0].length;
+
+
+
+		double[] result = new double[matrixA_rows];
+
+
+		if (matrixA_cols != matrixB_rows) {
+			System.out.println("error wrong dimensions of the matrix");
+		} else {
+
+			for (int i = 0; i < matrixA_rows; i++) {
+				for (int j = 0; j < matrixB_cols; j++) {
+					for (int k = 0; k < matrixA_cols; k++) {
+						result[i] += matrixA.data[i][k] * matrixB[k][j];
+
+					}
+				}
+
+			}
+
+
+		}
+
+		return result;
+
+
+	}
+}
 
 
 public class NeuralLayer {
+
+	int inputs;
+	int units;
+
+	public NeuralLayer(int inputs, int units){
+		this.inputs = inputs;
+		this.units = units;
+	};
+
+	private void feedForward(double[][] weights, double[][] input, double[] bias){
+
+
+
+	}
 	
 	public static void main(String[] args) {
 
@@ -76,10 +149,14 @@ public class NeuralLayer {
 		double[][] input = {{1}, {4}, {4}};
 		
 		double[] bias = {1, 1};
-		
-		double[] result = HelpFunctions.sigmoid(
-				HelpFunctions.addBias(
-						HelpFunctions.matrixMultiplication(weights, input),bias));
+
+		HelpFunctions hf = null;
+
+		double[] step1 =  hf.matrixMultiplication(weights, input);
+		double[] step2  = hf.addBias(step1, bias);
+		double[] result  = hf.sigmoid(step2);
+
+
 		
 		for (int i = 0; i < result.length; i++) {
 				System.out.println(result[i]);
