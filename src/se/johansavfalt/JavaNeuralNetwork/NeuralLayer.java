@@ -1,6 +1,9 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
 import java.util.Arrays;
+import se.johansavfalt.JavaNeuralNetwork.Activation_Sigmoid;
+import se.johansavfalt.JavaNeuralNetwork.Activation_Relu;
+
 
 class HelpFunctions {
 
@@ -73,7 +76,7 @@ class Matrix{
 	private final int units;
 	private final double[][] data;
 
-	public Matrix(int inputs, int units, double[][] data){
+	public Matrix(int inputs, int units){
 		this.inputs = inputs;
 		this.units = units;
 		this.data = new double[inputs][units];
@@ -126,15 +129,40 @@ class Matrix{
 	}
 }
 
-
 public class NeuralLayer {
 
-	int inputs;
-	int units;
+	private final int inputs;
+	private final int units;
+	Matrix weights;
+	private ActivationFunction activation;
 
-	public NeuralLayer(int inputs, int units){
+	public NeuralLayer(int inputs, int units, ActivationFunction activation){
 		this.inputs = inputs;
 		this.units = units;
+		this.activation = activation;
+		System.out.println(this.activation.getClass().getSimpleName());
+	};
+
+	private void init_weight_matrix(){
+		this.weights =  new Matrix(this.inputs, this.units);
+
+	};
+
+	private void init_bias_matrix(){
+		this.weights =  new Matrix(this.inputs, this.units);
+
+	};
+
+	private double sigmoid(double x){
+		return (1/( 1 + Math.pow(Math.E,(-1*x))));
+
+	}
+
+	private void init_activation_function(){
+		if(this.activation.equals("sigmoid")){
+
+		};
+
 	};
 
 	private void feedForward(double[][] weights, double[][] input, double[] bias){
@@ -144,6 +172,8 @@ public class NeuralLayer {
 	}
 	
 	public static void main(String[] args) {
+
+		NeuralLayer nl = new NeuralLayer(1,1, new Activation_Sigmoid());
 
 		double[][] weights = {{1, 2, 3}, {4, 5, 6}};
 		double[][] input = {{1}, {4}, {4}};
