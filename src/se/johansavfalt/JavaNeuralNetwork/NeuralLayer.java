@@ -133,14 +133,15 @@ public class NeuralLayer {
 
 	private final int inputs;
 	private final int units;
-	Matrix weights;
+	private Matrix weights;
+	private Matrix Activation_prev;
 	private ActivationFunction activation;
+
 
 	public NeuralLayer(int inputs, int units, ActivationFunction activation){
 		this.inputs = inputs;
 		this.units = units;
 		this.activation = activation;
-		System.out.println(this.activation.getClass().getSimpleName());
 	};
 
 	private void init_weight_matrix(){
@@ -153,27 +154,26 @@ public class NeuralLayer {
 
 	};
 
-	private double sigmoid(double x){
-		return (1/( 1 + Math.pow(Math.E,(-1*x))));
-
+	public void init_layer(){
+		init_weight_matrix();
+		init_bias_matrix();
 	}
 
-	private void init_activation_function(){
-		if(this.activation.equals("sigmoid")){
-
-		};
-
-	};
-
-	private void feedForward(double[][] weights, double[][] input, double[] bias){
-
+	private void layer_forward_propagation(Matrix Activation_prev){
+		this.Activation_prev = Activation_prev;
+		//TODO layer forward propagation where
+		//this.Z_curr = HelpFunctions.matrixMultiplication(this.Activation_prev, this.weights);
 
 
 	}
 	
 	public static void main(String[] args) {
 
-		NeuralLayer nl = new NeuralLayer(1,1, new Activation_Sigmoid());
+		NeuralLayer nl1 = new NeuralLayer(2,4, new Activation_Relu());
+		NeuralLayer nl2 = new NeuralLayer(4,4, new Activation_Relu());
+		NeuralLayer nl3 = new NeuralLayer(4,2, new Activation_Sigmoid());
+		NeuralLayer nl4 = new NeuralLayer(2,1, new Activation_Sigmoid());
+
 
 		double[][] weights = {{1, 2, 3}, {4, 5, 6}};
 		double[][] input = {{1}, {4}, {4}};
