@@ -3,138 +3,18 @@ package se.johansavfalt.JavaNeuralNetwork;
 import java.util.Arrays;
 import se.johansavfalt.JavaNeuralNetwork.Activation_Sigmoid;
 import se.johansavfalt.JavaNeuralNetwork.Activation_Relu;
+import se.johansavfalt.JavaNeuralNetwork.Matrix;
 
-
-class HelpFunctions {
-
-	//TODO should move all this into a matrix class
-	
-	public static double[] matrixMultiplication(double[][] matrixA, double[][] matrixB){
-
-		
-		int matrixA_rows = matrixA.length;
-		int matrixA_cols = matrixA[0].length;
-		int matrixB_rows = matrixB.length;
-		int matrixB_cols = matrixB[0].length;
-		
-		
-		
-		double[] result = new double[matrixA_rows]; 
-		
-		
-		if (matrixA_cols != matrixB_rows) {
-			System.out.println("error wrong dimensions of the matrix");
-		} else {
-			
-			for (int i = 0; i < matrixA_rows; i++) {
-				for (int j = 0; j < matrixB_cols; j++) {
-					for (int k = 0; k < matrixA_cols; k++) {
-						result[i] += matrixA[i][k] * matrixB[k][j];
-						
-					}
-				}
-				
-			}
-			
-			
-		}
-		
-		return result;
-		
-
-	}
-
-	public static double[] addBias(double[] matrixA, double[] matrixB){
-				
-		for (int i = 0; i < matrixA.length; i++) {
-				matrixA[i] += matrixB[i];
-				
-			}
-			
-		
-				
-		return matrixA;
-		
-	}
-	
-	public static double[] sigmoid(double[] resultZ) {
-		double[] activation = Arrays.copyOf(resultZ, resultZ.length);
-		
-		for (int i = 0; i < activation.length; i++) {
-			activation[i] = 1 / (1 + Math.exp(-resultZ[i]));
-		}
-		
-		return activation;
-		
-		
-	}
-}
-
-class Matrix{
-
-	private final int inputs;
-	private final int units;
-	private final double[][] data;
-
-	public Matrix(int inputs, int units){
-		this.inputs = inputs;
-		this.units = units;
-		this.data = new double[inputs][units];
-
-	}
-
-	private void init_random_values(){
-		for (int i = 0; i < inputs ; i++) {
-			for (int j = 0; j < units ; j++) {
-				data[i][j] = Math.random();
-			}
-		}
-	}
-
-	private double[] matrixMultiplication(double[][] matrixB){
-		Matrix matrixA = this;
-
-		int matrixA_rows = matrixA.inputs;
-		int matrixA_cols = matrixA.units;
-
-		// TODO make a Matrix class?
-		int matrixB_rows = matrixB.length;
-		int matrixB_cols = matrixB[0].length;
-
-
-
-		double[] result = new double[matrixA_rows];
-
-
-		if (matrixA_cols != matrixB_rows) {
-			System.out.println("error wrong dimensions of the matrix");
-		} else {
-
-			for (int i = 0; i < matrixA_rows; i++) {
-				for (int j = 0; j < matrixB_cols; j++) {
-					for (int k = 0; k < matrixA_cols; k++) {
-						result[i] += matrixA.data[i][k] * matrixB[k][j];
-
-					}
-				}
-
-			}
-
-
-		}
-
-		return result;
-
-
-	}
-}
 
 public class NeuralLayer {
 
 	private final int inputs;
 	private final int units;
-	private Matrix weights;
-	private Matrix Activation_prev;
+	private double[][] weights;
+	private double[][] Activation_prev;
+	private double[][] Z_curr;
+	private double[][] bias;
+
 	private ActivationFunction activation;
 
 
@@ -145,12 +25,11 @@ public class NeuralLayer {
 	};
 
 	private void init_weight_matrix(){
-		this.weights =  new Matrix(this.inputs, this.units);
-
+		this.weights = Matrix.random(this.inputs,this.units);
 	};
 
 	private void init_bias_matrix(){
-		this.weights =  new Matrix(this.inputs, this.units);
+		this.bias = Matrix.random(1,this.units);
 
 	};
 
@@ -159,11 +38,10 @@ public class NeuralLayer {
 		init_bias_matrix();
 	}
 
-	private void layer_forward_propagation(Matrix Activation_prev){
+	private void layer_forward_propagation(double[][] Activation_prev){
 		this.Activation_prev = Activation_prev;
-		//TODO layer forward propagation where
-		//this.Z_curr = HelpFunctions.matrixMultiplication(this.Activation_prev, this.weights);
-
+		this.Z_curr = Matrix.add(Matrix.multiply(this.weights, this.Activation_prev),this.bias);
+		//this.Activation_curr = activation.activation(this.Z_curr);
 
 	}
 	
@@ -180,18 +58,18 @@ public class NeuralLayer {
 		
 		double[] bias = {1, 1};
 
-		HelpFunctions hf = null;
-
-		double[] step1 =  hf.matrixMultiplication(weights, input);
-		double[] step2  = hf.addBias(step1, bias);
-		double[] result  = hf.sigmoid(step2);
-
-
-		
-		for (int i = 0; i < result.length; i++) {
-				System.out.println(result[i]);
-			
-		}
+//		HelpFunctions hf = null;
+//
+//		double[] step1 =  hf.matrixMultiplication(weights, input);
+//		double[] step2  = hf.addBias(step1, bias);
+//		double[] result  = hf.sigmoid(step2);
+//
+//
+//
+//		for (int i = 0; i < result.length; i++) {
+//				System.out.println(result[i]);
+//
+//		}
 		
 	}
 
