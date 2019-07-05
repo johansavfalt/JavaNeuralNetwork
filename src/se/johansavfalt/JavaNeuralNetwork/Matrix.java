@@ -1,6 +1,8 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
-class MatrixOperations {
+import java.util.Arrays;
+
+public class Matrix {
 
     // return a random m-by-n matrix with values between 0 and 1
     public static double[][] random(int m, int n) {
@@ -101,88 +103,25 @@ class MatrixOperations {
         return y;
     }
 
-}
+    public static int getLength(double[][] matrix){
+        int length = 0;
+        for (int i = 0; i < matrix.length ; i++) {
+            length += matrix[i].length;
+        }
+        return length;
+    }
 
-//need to wrap the "Matrix" in an object where i can detect dimensions of matrix
-public class Matrix{
+    public static int getWidht(double[][] matrix){
+        return matrix.length;
+    }
 
-    private final int inputs;
-    private final int units;
-    private final double[][] matrix;
 
-    public Matrix(int inputs, int units){
-        this.inputs = inputs;
-        this.units = units;
-        this.matrix = new double[inputs][units];
+    public static void main(String[] args) {
+        double[][] matrix1 = Matrix.random(1,1);
+        double[][] matrix2 = Matrix.random(1,1);
+        double[][] matrix3 = Matrix.add(matrix1, matrix2);
+        System.out.println(Integer.toString(Matrix.getLength(matrix1)) +Integer.toString(Matrix.getWidht(matrix2)));
 
     }
 
-    public int getInputs(){ return this.inputs;}
-    public int getunits(){ return this.units;}
-    public double[][] getMatrix(){ return this.matrix;}
-
-
-
-
 }
-
-
-
-//class Matrix{
-//
-//	private final int inputs;
-//	private final int units;
-//	private final double[][] data;
-//
-//	public Matrix(int inputs, int units){
-//		this.inputs = inputs;
-//		this.units = units;
-//		this.data = new double[inputs][units];
-//
-//	}
-//
-//	private void init_random_values(){
-//		for (int i = 0; i < inputs ; i++) {
-//			for (int j = 0; j < units ; j++) {
-//				data[i][j] = Math.random();
-//			}
-//		}
-//	}
-//
-//	public double[] matrixMultiplication(double[][] matrixB){
-//		Matrix matrixA = this;
-//
-//		int matrixA_rows = matrixA.inputs;
-//		int matrixA_cols = matrixA.units;
-//
-//		// TODO make a Matrix class?
-//		int matrixB_rows = matrixB.length;
-//		int matrixB_cols = matrixB[0].length;
-//
-//
-//
-//		double[] result = new double[matrixA_rows];
-//
-//
-//		if (matrixA_cols != matrixB_rows) {
-//			System.out.println("error wrong dimensions of the matrix");
-//		} else {
-//
-//			for (int i = 0; i < matrixA_rows; i++) {
-//				for (int j = 0; j < matrixB_cols; j++) {
-//					for (int k = 0; k < matrixA_cols; k++) {
-//						result[i] += matrixA.data[i][k] * matrixB[k][j];
-//
-//					}
-//				}
-//
-//			}
-//
-//
-//		}
-//
-//		return result;
-//
-//
-//	}
-//}
