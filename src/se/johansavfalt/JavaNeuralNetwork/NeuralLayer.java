@@ -1,6 +1,9 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 import se.johansavfalt.JavaNeuralNetwork.Activation_Sigmoid;
 import se.johansavfalt.JavaNeuralNetwork.Activation_Relu;
 import se.johansavfalt.JavaNeuralNetwork.Matrix;
@@ -12,6 +15,7 @@ public class NeuralLayer {
 	private final int units;
 	private double[][] weights;
 	private double[][] Activation_prev;
+	private double[][] Activation_curr;
 	private double[][] Z_curr;
 	private double[][] bias;
 
@@ -38,19 +42,29 @@ public class NeuralLayer {
 		init_bias_matrix();
 	}
 
-	private void layer_forward_propagation(double[][] Activation_prev){
+	private double[][] layer_forward_propagation(double[][] Activation_prev){
 		this.Activation_prev = Activation_prev;
-		this.Z_curr = Matrix.add(Matrix.multiply(this.weights, this.Activation_prev),this.bias);
-		//this.Activation_curr = activation.activation(this.Z_curr);
+		this.Z_curr = Matrix.add(Matrix.multiply(this.weights, this.Activation_prev), this.bias);
+		//TODO: this.activation_curr could be both double and double[][] use generic type?
+		// probably have to box double into Double
+		// maby should always be double[][]? with [[1.0]] for single double?
+		this.Activation_curr = activation.activation(this.Z_curr);
+		return this.Activation_curr;
 
 	}
 	
 	public static void main(String[] args) {
 
-		NeuralLayer nl1 = new NeuralLayer(2,4, new Activation_Relu());
-		NeuralLayer nl2 = new NeuralLayer(4,4, new Activation_Relu());
-		NeuralLayer nl3 = new NeuralLayer(4,2, new Activation_Sigmoid());
-		NeuralLayer nl4 = new NeuralLayer(2,1, new Activation_Sigmoid());
+		List<NeuralLayer> NeuralNetwork = new ArrayList<NeuralLayer>();
+		NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Relu()));
+		NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Relu()));
+		NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Sigmoid()));
+		NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
+
+		for (NeuralLayer layer: NeuralNetwork) {
+			layer.init_layer();
+
+		}
 
 
 		double[][] weights = {{1, 2, 3}, {4, 5, 6}};
@@ -58,18 +72,6 @@ public class NeuralLayer {
 		
 		double[] bias = {1, 1};
 
-//		HelpFunctions hf = null;
-//
-//		double[] step1 =  hf.matrixMultiplication(weights, input);
-//		double[] step2  = hf.addBias(step1, bias);
-//		double[] result  = hf.sigmoid(step2);
-//
-//
-//
-//		for (int i = 0; i < result.length; i++) {
-//				System.out.println(result[i]);
-//
-//		}
 		
 	}
 
