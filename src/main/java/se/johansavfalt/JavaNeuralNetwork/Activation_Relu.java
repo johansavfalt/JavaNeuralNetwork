@@ -2,12 +2,12 @@ package se.johansavfalt.JavaNeuralNetwork;
 
 public class Activation_Relu implements ActivationFunction {
 
-    @Override
+
     public double activation(double x) {
         return Math.max(x,0.0);
     }
 
-    @Override
+
     public double activation_derivative(double x) {
         if (x > 0.0){
             return 1.0;
@@ -16,7 +16,6 @@ public class Activation_Relu implements ActivationFunction {
         }
     }
 
-    @Override
     public double[][] activation(double[][] x) {
         double[][] result = null;
         for (int i = 0; i < x.length; i++) {
@@ -27,7 +26,6 @@ public class Activation_Relu implements ActivationFunction {
         return result;
     }
 
-    @Override
     public double[][] activation_derivative(double[][] x) {
         double[][] result = null;
         for (int i = 0; i < x.length; i++) {
