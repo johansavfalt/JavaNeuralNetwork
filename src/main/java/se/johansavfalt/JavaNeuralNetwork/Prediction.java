@@ -13,11 +13,6 @@ public class Prediction {
         NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Relu()));
         NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Relu()));
 
-        for (NeuralLayer layer: NeuralNetwork) {
-            layer.init_layer();
-
-        }
-
 
     }
 }

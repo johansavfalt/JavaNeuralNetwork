@@ -1,8 +1,19 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Matrix {
+
+    private final int length;
+    private final int width;
+    private double[][] matrix;
+
+    public Matrix(int length, int width){
+        this.length = length;
+        this.width = width;
+        this.matrix = random(length, width);
+    }
 
     // return a random m-by-n matrix with values between 0 and 1
     public static double[][] random(int m, int n) {
@@ -21,52 +32,44 @@ public class Matrix {
         return a;
     }
 
-    // return x^T y
-    public static double dot(double[] x, double[] y) {
-        if (x.length != y.length) throw new RuntimeException("Illegal vector dimensions.");
-        double sum = 0.0;
-        for (int i = 0; i < x.length; i++)
-            sum += x[i] * y[i];
-        return sum;
-    }
 
     // return B = A^T
-    public static double[][] transpose(double[][] a) {
-        int m = a.length;
-        int n = a[0].length;
+    public double[][] transpose() {
+        int m = matrix.length;
+        int n = matrix[0].length;
         double[][] b = new double[n][m];
         for (int i = 0; i < m; i++)
             for (int j = 0; j < n; j++)
-                b[j][i] = a[i][j];
+                b[j][i] = matrix[i][j];
         return b;
     }
 
     // return c = a + b
-    public static double[][] add(double[][] a, double[][] b) {
-        int m = a.length;
-        int n = a[0].length;
+    public double[][] add(double[][] b) {
+        int m = this.length;
+        int n = this.width;
         double[][] c = new double[m][n];
         for (int i = 0; i < m; i++)
             for (int j = 0; j < n; j++)
-                c[i][j] = a[i][j] + b[i][j];
+                c[i][j] = matrix[i][j] + b[i][j];
         return c;
     }
 
     // return c = a - b
-    public static double[][] subtract(double[][] a, double[][] b) {
-        int m = a.length;
-        int n = a[0].length;
+    public double[][] subtract(double[][] b) {
+        int m = this.length;
+        int n = this.width;
         double[][] c = new double[m][n];
         for (int i = 0; i < m; i++)
             for (int j = 0; j < n; j++)
-                c[i][j] = a[i][j] - b[i][j];
+                c[i][j] = this.matrix[i][j] - b[i][j];
         return c;
     }
 
     // return c = a * b
-    public static double[][] multiply(double[][] a, double[][] b) {
-        int m1 = a.length;
-        int n1 = a[0].length;
+    public double[][] multiply(double[][] b) {
+        int m1 = this.length;
+        int n1 = this.width;
         int m2 = b.length;
         int n2 = b[0].length;
         if (n1 != m2) throw new RuntimeException("Illegal matrix dimensions.");
@@ -74,53 +77,42 @@ public class Matrix {
         for (int i = 0; i < m1; i++)
             for (int j = 0; j < n2; j++)
                 for (int k = 0; k < n1; k++)
-                    c[i][j] += a[i][k] * b[k][j];
+                    c[i][j] += this.matrix[i][k] * b[k][j];
         return c;
     }
 
     // matrix-vector multiplication (y = A * x)
-    public static double[] multiply(double[][] a, double[] x) {
-        int m = a.length;
-        int n = a[0].length;
+    public double[] multiply(double[] x) {
+        int m = this.length;
+        int n = this.width;
         if (x.length != n) throw new RuntimeException("Illegal matrix dimensions.");
         double[] y = new double[m];
         for (int i = 0; i < m; i++)
             for (int j = 0; j < n; j++)
-                y[i] += a[i][j] * x[j];
+                y[i] += this.matrix[i][j] * x[j];
         return y;
     }
 
-
-    // vector-matrix multiplication (y = x^T A)
-    public static double[] multiply(double[] x, double[][] a) {
-        int m = a.length;
-        int n = a[0].length;
-        if (x.length != m) throw new RuntimeException("Illegal matrix dimensions.");
-        double[] y = new double[n];
-        for (int j = 0; j < n; j++)
-            for (int i = 0; i < m; i++)
-                y[j] += a[i][j] * x[i];
-        return y;
+    public int getLength(){
+        return this.length;
     }
 
-    public static int getLength(double[][] matrix){
-        int length = 0;
-        for (int i = 0; i < matrix.length ; i++) {
-            length += matrix[i].length;
-        }
-        return length;
+    public int getWidth(){
+        return this.width;
     }
 
-    public static int getWidht(double[][] matrix){
-        return matrix.length;
+    public double[][] getMatrix(){
+        return this.matrix;
     }
 
 
     public static void main(String[] args) {
-        double[][] matrix1 = Matrix.random(1,1);
-        double[][] matrix2 = Matrix.random(1,1);
-        double[][] matrix3 = Matrix.add(matrix1, matrix2);
-        System.out.println(Integer.toString(Matrix.getLength(matrix1)) +Integer.toString(Matrix.getWidht(matrix2)));
+        Matrix matrix1 = new Matrix(2,2);
+        Matrix matrix2 = new Matrix(2,2);
+        matrix1.multiply(matrix2.getMatrix());
+        System.out.println();
+
+
 
     }
 

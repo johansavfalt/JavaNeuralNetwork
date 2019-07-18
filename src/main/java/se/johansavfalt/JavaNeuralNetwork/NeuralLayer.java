@@ -13,11 +13,12 @@ public class NeuralLayer {
 
 	private final int inputs;
 	private final int units;
-	private double[][] weights;
+	private Matrix weights;
+	private Matrix bias;
 	private double[][] Activation_prev;
 	private double[][] Activation_curr;
 	private double[][] Z_curr;
-	private double[][] bias;
+
 
 	private ActivationFunction activation;
 
@@ -26,29 +27,16 @@ public class NeuralLayer {
 		this.inputs = inputs;
 		this.units = units;
 		this.activation = activation;
+		this.weights = new Matrix(this.inputs, this.units);
+		this.bias = new Matrix(1, units);
 	};
 
-	private void init_weight_matrix(){
-		this.weights = Matrix.random(this.inputs,this.units);
-	};
-
-	private void init_bias_matrix(){
-		this.bias = Matrix.random(1,this.units);
-
-	};
-
-	public void init_layer(){
-		init_weight_matrix();
-		init_bias_matrix();
-	}
 
 	private double[][] layer_forward_propagation(double[][] Activation_prev){
 		this.Activation_prev = Activation_prev;
-		this.Z_curr = Matrix.add(Matrix.multiply(this.weights, this.Activation_prev), this.bias);
-		//TODO: this.activation_curr could be both double and double[][] use generic type?
-		// probably have to box double into Double
-		// maby should always be double[][]? with [[1.0]] for single double?
-		this.Activation_curr = activation.activation(this.Z_curr);
+		// TODO should redo the matrixclass from https://causeyourestuck.io/2017/06/25/neural-network-scratch-practice/
+		this.Z_curr = this.bias.add(this.weights.multiply(this.Activation_prev));
+		this.Activation_curr = this.activation.activation(this.Z_curr);
 		return this.Activation_curr;
 
 	}
@@ -61,16 +49,15 @@ public class NeuralLayer {
 		NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Sigmoid()));
 		NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
 
-		for (NeuralLayer layer: NeuralNetwork) {
-			layer.init_layer();
+		double[][] data = {{1, 2}, {4, 5}};
 
-		}
+		NeuralNetwork.get(0).layer_forward_propagation(data);
 
 
-		double[][] weights = {{1, 2, 3}, {4, 5, 6}};
-		double[][] input = {{1}, {4}, {4}};
-		
-		double[] bias = {1, 1};
+//		double[][] weights = {{1, 2, 3}, {4, 5, 6}};
+//		double[][] input = {{1}, {4}, {4}};
+//
+//		double[] bias = {1, 1};
 
 		
 	}
