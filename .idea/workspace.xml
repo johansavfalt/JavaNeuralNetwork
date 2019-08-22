@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdae862b-99cf-408c-b277-1f0de497af66" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="f77feb18-6376-44a3-a010-9405c992ad7e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/MatrixTest" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNeuralNetwork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaNeuralNetwork.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Activation_Sigmoid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Matrix.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Prediction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Sigmoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Sigmoid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/DL4J.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/JavaNeuralNetwork.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/se/johansavfalt/JavaNeuralNetwork/Matrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/se/johansavfalt/JavaNeuralNetwork/Matrix.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/se/johansavfalt/JavaNeuralNetwork/Prediction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/se/johansavfalt/JavaNeuralNetwork/Prediction.class" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,123 +27,128 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="autoscrollToSource" value="true" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="70" column="22" selection-start-line="70" selection-end-line="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#675#676#0" expanded="true" />
-                <element signature="e#734#735#0" expanded="true" />
-                <element signature="e#1386#1399#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Sigmoid.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-              <folding>
-                <element signature="e#159#160#0" expanded="true" />
-                <element signature="e#197#198#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Matrix.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
-              <folding>
-                <element signature="e#3515#3516#0" expanded="true" />
-                <element signature="e#3551#3552#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Prediction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                  <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/pom.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="210">
+                  <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Sigmoid.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#146#147#0" expanded="true" />
+                    <element signature="e#184#185#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Matrix.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="992">
+                  <caret line="225" selection-start-line="225" selection-end-line="225" />
+                  <folding>
+                    <element signature="e#261#262#0" expanded="true" />
+                    <element signature="e#285#286#0" expanded="true" />
+                    <element signature="e#310#311#0" expanded="true" />
+                    <element signature="e#334#335#0" expanded="true" />
+                    <element signature="e#369#370#0" expanded="true" />
+                    <element signature="e#396#397#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TODO</find>
+      <find>StdOut.println();</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Prediction.java" />
-        <option value="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/MatrixOperations.java" />
-        <option value="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Matrix.java" />
-        <option value="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java" />
         <option value="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java" />
         <option value="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java" />
         <option value="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Activation_Sigmoid.java" />
+        <option value="$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/MatrixTest" />
+        <option value="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Matrix.java" />
+        <option value="$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Sigmoid.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="28" />
-    <option name="width" value="1270" />
-    <option name="height" value="766" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="-2560" />
+    <option name="y" value="-86" />
+    <option name="width" value="2560" />
+    <option name="height" value="1440" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -149,6 +156,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -178,21 +186,40 @@
               <item name="JavaNeuralNetwork" type="b2602c69:ProjectViewProjectNode" />
               <item name="JavaNeuralNetwork" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="JavaNeuralNetwork" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaNeuralNetwork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaNeuralNetwork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaNeuralNetwork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaNeuralNetwork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="se.johansavfalt.JavaNeuralNetwork" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -206,20 +233,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Activation_Sigmoid">
-    <configuration name="Activation_Sigmoid" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="se.johansavfalt.JavaNeuralNetwork.Activation_Sigmoid" />
-      <module name="JavaNeuralNetwork" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="se.johansavfalt.JavaNeuralNetwork.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Matrix">
     <configuration name="Matrix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="se.johansavfalt.JavaNeuralNetwork.Matrix" />
       <module name="JavaNeuralNetwork" />
@@ -246,11 +260,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="JavaNeuralNetwork" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.NeuralLayer" />
+      <item itemvalue="Application.Matrix" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Activation_Sigmoid" />
-        <item itemvalue="Application.NeuralLayer" />
         <item itemvalue="Application.Matrix" />
+        <item itemvalue="Application.NeuralLayer" />
       </list>
     </recent_temporary>
   </component>
@@ -259,19 +285,18 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cdae862b-99cf-408c-b277-1f0de497af66" name="Default Changelist" comment="" />
-      <created>1561317244442</created>
+      <changelist id="f77feb18-6376-44a3-a010-9405c992ad7e" name="Default Changelist" comment="" />
+      <created>1560594540809</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1561317244442</updated>
+      <updated>1560594540809</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1270" height="771" extended-state="6" />
-    <editor active="true" />
+    <frame x="-2560" y="-86" width="2560" height="1440" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25162867" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1640625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -280,15 +305,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32842416" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39911634" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3479511" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32842416" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32854062" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.3210604" />
+      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.16462976" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -298,133 +323,79 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Image Layers" order="0" />
-      <window_info id="Designer" order="1" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Capture Tool" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.24958949" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="3" weight="0.32868218" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.32868218" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-    </layout-to-restore>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>result[][]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>x[0].length</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>x[0][1]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>x[0][0]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>x[0]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>x.length</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Prediction.java">
+    <entry file="file://$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.class" />
+    <entry file="file://$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/HelpFunctions.class" />
+    <entry file="file://$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/ActivationFunctions.java" />
+    <entry file="file://$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java" />
+    <entry file="file://$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java" />
+    <entry file="file://$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java" />
+    <entry file="file://$PROJECT_DIR$/src/se/johansavfalt/JavaNeuralNetwork/Activation_Sigmoid.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/DL4J.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/MatrixTest">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="e#146#147#0" expanded="true" />
+            <element signature="e#184#185#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Matrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+        <state relative-caret-position="992">
+          <caret line="225" selection-start-line="225" selection-end-line="225" />
           <folding>
-            <element signature="e#3515#3516#0" expanded="true" />
-            <element signature="e#3551#3552#0" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#310#311#0" expanded="true" />
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#369#370#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/NeuralLayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="70" column="22" selection-start-line="70" selection-end-line="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#675#676#0" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#1386#1399#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Relu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-          <folding>
-            <element signature="e#159#160#0" expanded="true" />
-            <element signature="e#197#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/ActivationFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        <state relative-caret-position="285">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/se/johansavfalt/JavaNeuralNetwork/Activation_Sigmoid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="255">
+          <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -484,6 +455,18 @@
               <list>
                 <option value="0.2" />
                 <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>

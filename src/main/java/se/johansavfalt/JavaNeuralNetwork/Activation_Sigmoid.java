@@ -2,7 +2,7 @@ package se.johansavfalt.JavaNeuralNetwork;
 
 import java.util.Arrays;
 
-public class Activation_Sigmoid implements ActivationFunction {
+public class Activation_Sigmoid  { //TODO this should implement the activationfunction interface
     
     public double[][] activation(double[][] x){
         double[][] result = null;

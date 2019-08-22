@@ -16,23 +16,28 @@ public class Activation_Relu implements ActivationFunction {
         }
     }
 
-    public double[][] activation(double[][] x) {
-        double[][] result = null;
-        for (int i = 0; i < x.length; i++) {
-            for (int j = 0; j < x[i].length; j++) {
-                result[i][j] = activation(x[i][j]);
+    public Matrix activation(Matrix x){
+        Matrix result = new Matrix(x.getRows(), x.getColumns());
+        for (int i = 0; i < x.getRows(); i++) {
+            for (int j = 0; j < x.getColumns(); j++) {
+                result.getData()[i][j] = activation(x.getData()[i][j]);
             }
         }
         return result;
+
     }
 
-    public double[][] activation_derivative(double[][] x) {
-        double[][] result = null;
-        for (int i = 0; i < x.length; i++) {
-            for (int j = 0; j < x[i].length; j++) {
-                result[i][j] = activation_derivative(x[i][j]);
+
+
+    public Matrix activation_derivative(Matrix x){
+        Matrix result = new Matrix(x.getRows(), x.getColumns());
+        for (int i = 0; i < x.getRows(); i++) {
+            for (int j = 0; j < x.getColumns(); j++) {
+                result.getData()[i][j] = activation(x.getData()[i][j]);
             }
         }
         return result;
+
     }
+
 }
