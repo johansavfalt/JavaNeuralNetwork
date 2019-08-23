@@ -3,5 +3,5 @@
 .settings
 .classpath
 .iml
-/.idea
-/target
+.idea/
+target/
