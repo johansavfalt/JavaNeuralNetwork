@@ -17,6 +17,10 @@ final public class Matrix {
         return data;
     }
 
+    public void setData(int m, int n, double value){
+        this.data[m][n] = value;
+    }
+
     // create M-by-N matrix of 0's
     public Matrix(int M, int N) {
         this.M = M;
@@ -36,6 +40,8 @@ final public class Matrix {
 
     // copy constructor
     private Matrix(Matrix A) { this(A.data); }
+
+
 
     // create and return a random M-by-N matrix with values between 0 and 1
     public static Matrix random(int M, int N) {
@@ -90,6 +96,15 @@ final public class Matrix {
         for (int i = 0; i < M; i++)
             for (int j = 0; j < N; j++)
                 C.data[i][j] = A.data[i][j] - B.data[i][j];
+        return C;
+    }
+
+    public Matrix minusConstant(double constant){
+        Matrix A = this;
+        Matrix C = new Matrix(M, N);
+        for (int i = 0; i < M; i++)
+            for (int j = 0; j < N; j++)
+                C.data[i][j] = A.data[i][j] - constant;
         return C;
     }
 

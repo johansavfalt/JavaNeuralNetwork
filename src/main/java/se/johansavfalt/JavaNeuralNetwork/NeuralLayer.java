@@ -44,12 +44,12 @@ public class NeuralLayer {
 	
 	public static void main(String[] args) {
 
-//		List<NeuralLayer> NeuralNetwork = new ArrayList<NeuralLayer>();
-//		NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Relu()));
-//		NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Relu()));
-//		NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Sigmoid()));
-//		NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
-//
+		List<NeuralLayer> NeuralNetwork = new ArrayList<NeuralLayer>();
+		NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Relu()));
+		NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Relu()));
+		NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Sigmoid()));
+		NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
+
 //		double[][] data = {{1, 2}, {4, 5}};
 
 		//NeuralNetwork.get(0).layer_forward_propagation(data);
