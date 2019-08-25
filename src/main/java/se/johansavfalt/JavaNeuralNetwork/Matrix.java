@@ -1,5 +1,7 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
+import java.util.function.Function;
+
 final public class Matrix {
     private final int M;             // number of rows
     private final int N;             // number of columns
@@ -130,6 +132,17 @@ final public class Matrix {
         return C;
     }
 
+
+    public Matrix applyFunction(Function<Double,Double> func){
+        Matrix A = this;
+        Matrix C = new Matrix(M, N);
+        for (int i = 0; i < M; i++)
+            for (int j = 0; j < N; j++)
+                C.data[i][j] = func.apply(A.data[i][j]);
+        return C;
+
+
+    }
 
     // return x = A^-1 b, assuming A is square and has full rank
     public Matrix solve(Matrix rhs) {
