@@ -89,6 +89,12 @@ final public class Matrix {
         return C;
     }
 
+    public Matrix broadcasting(Matrix B){
+        Matrix A = this;
+        if (B.M != A.M || B.N != A.N) throw new RuntimeException("Illegal matrix dimensions.");
+        return null;
+    }
+
 
     // return C = A - B
     public Matrix minus(Matrix B) {
@@ -119,6 +125,18 @@ final public class Matrix {
                 if (A.data[i][j] != B.data[i][j]) return false;
         return true;
     }
+
+    // return x^T y
+//    public Matrix dot(Matrix B) {
+//        Matrix A = this;
+//        if (A.M != B.M) throw new RuntimeException("Illegal vector dimensions.");
+//        double sum = 0.0;
+//        for (int i = 0; i < A.M; i++)
+//            sum += A.data[i] * B.data[i];
+//        return sum;
+//    }
+
+
 
     // return C = A * B
     public Matrix times(Matrix B) {
@@ -202,6 +220,7 @@ final public class Matrix {
             
         }
         System.out.println();
+        System.out.println("M: "+this.M+" N: "+this.N);
         System.out.println("---------------------------------------");
     }
 
@@ -209,46 +228,67 @@ final public class Matrix {
 
     // test client
     public static void main(String[] args) {
-        double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3} };
-        Matrix D = new Matrix(d);
-        D.show();
-        
+//        double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3} };
 
-        Matrix A = Matrix.random(5, 5);
-        A.show();
-        
+        double[][] da = { { 0, 1 }, { 1, 0 }, { 0, 0 }, { 1, 1 }};
+        double[][] db = { { 5 }, { 4 }};
+        double[][] dc = {{1},{1},{1},{1}};
 
-        A.swap(1, 2);
-        A.show();
-        
 
-        Matrix B = A.transpose();
-        B.show();
-        
+        Matrix x = new Matrix(da);
+        Matrix w = new Matrix(db);
+        Matrix b = new Matrix(dc);
 
-        Matrix C = Matrix.identity(5);
-        C.show();
-        
 
-        A.plus(B).show();
-        
 
-        B.times(A).show();
-        
-
-        // shouldn't be equal since AB != BA in general    
-        System.out.println((A.times(B).eq(B.times(A))));
-        
-
-        Matrix b = Matrix.random(5, 1);
-        b.show();
-        
-
-        Matrix x = A.solve(b);
         x.show();
-        
+        w.show();
+        x.times(w).show();
 
-        A.times(x).show();
+        b.show();
+        x.times(w).plus(b).show();
+        x.times(w).plus(b).transpose().show();
+
+
+//        Matrix D = new Matrix(d);
+//        D.show();
+//
+//
+//        Matrix A = Matrix.random(5, 5);
+//        A.show();
+//
+//
+//        A.swap(1, 2);
+//        A.show();
+//
+//
+//        Matrix B = A.transpose();
+//        B.show();
+//
+//
+//        Matrix C = Matrix.identity(5);
+//        C.show();
+//
+//
+//        A.plus(B).show();
+//
+//
+//        B.times(A).show();
+//
+//
+//        // shouldn't be equal since AB != BA in general
+//        System.out.println((A.times(B).eq(B.times(A))));
+//
+//
+//        Matrix b = Matrix.random(5, 1);
+//        b.show();
+//
+//
+//        Matrix x = A.solve(b);
+//        x.show();
+//
+//
+//        A.times(x).show();
 
     }
 

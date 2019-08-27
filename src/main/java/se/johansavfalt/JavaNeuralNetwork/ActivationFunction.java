@@ -2,8 +2,8 @@ package se.johansavfalt.JavaNeuralNetwork;
 
 public interface ActivationFunction {
 
-    public Matrix activation(Matrix x);
+    public double activation(double doubleValue);
 
-    public Matrix activation_derivative(Matrix x);
+    public double activation_derivative(double doubleValue);
 
 }

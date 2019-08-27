@@ -18,9 +18,6 @@ public class NeuralLayer {
 	private Matrix Activation_prev;
 	private Matrix Activation_curr;
 	private Matrix Z_curr;
-
-
-
 	private ActivationFunction activation;
 
 
@@ -28,16 +25,23 @@ public class NeuralLayer {
 		this.inputs = inputs;
 		this.units = units;
 		this.activation = activation;
-		this.weights = new Matrix(this.inputs, this.units);
-		this.bias = new Matrix(1, units);
+		this.weights = Matrix.random(inputs, units);
+		this.bias = new Matrix(units,1 );
 	};
 
 
 	private Matrix layer_forward_propagation(Matrix Activation_prev){
-		// TODO: test this
 		this.Activation_prev = Activation_prev;
-		this.Z_curr = this.bias.plus(this.weights.times(this.Activation_prev));
-		this.Activation_curr = this.activation.activation(this.Z_curr);
+		this.Activation_prev.show();
+		this.weights.show();
+		this.Activation_prev.times(this.weights).show();
+		this.bias.show();
+		Matrix result = this.Activation_prev.times(this.weights);
+		result.plus(this.bias).show();
+
+		this.Z_curr = this.Activation_prev.times(this.weights).plus(this.bias).transpose();
+		this.Activation_curr = this.Z_curr.applyFunction(activation::activation);
+
 		return this.Activation_curr;
 
 	}
@@ -47,8 +51,17 @@ public class NeuralLayer {
 		List<NeuralLayer> NeuralNetwork = new ArrayList<NeuralLayer>();
 		NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Relu()));
 		NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Relu()));
-		NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Sigmoid()));
+		NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Relu()));
 		NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
+
+
+		Matrix data = new Matrix(new double[][]{{0, 1}, {1, 0}, {0, 0}, {1, 1}});
+
+
+		for (NeuralLayer layer : NeuralNetwork) {
+			layer.layer_forward_propagation(data);
+		}
+
 
 //		double[][] data = {{1, 2}, {4, 5}};
 
