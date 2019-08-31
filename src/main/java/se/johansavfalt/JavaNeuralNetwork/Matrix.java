@@ -78,10 +78,21 @@ final public class Matrix {
         return A;
     }
 
+    public void fillwith(int i){
+        for (int j = 0; j < M; j++) {
+            for (int k = 0; k < N; k++) {
+                this.data[j][k] = i;
+            }
+        }
+    }
+
     // return C = A + B
     public Matrix plus(Matrix B) {
         Matrix A = this;
-        if (B.M != A.M || B.N != A.N) throw new RuntimeException("Illegal matrix dimensions.");
+        if (B.M != A.M || B.N != A.N) {
+            B = getAdjustedMatrix(B, A.N);
+            //throw new RuntimeException("Illegal matrix dimensions.");
+        }
         Matrix C = new Matrix(M, N);
         for (int i = 0; i < M; i++)
             for (int j = 0; j < N; j++)
@@ -89,12 +100,15 @@ final public class Matrix {
         return C;
     }
 
-    public Matrix broadcasting(Matrix B){
-        Matrix A = this;
-        if (B.M != A.M || B.N != A.N) throw new RuntimeException("Illegal matrix dimensions.");
-        return null;
+    private Matrix getAdjustedMatrix(Matrix B,int n) {
+        Matrix result = new Matrix(B.M, n);
+        for (int i = 0; i < B.M; i++) {
+            for (int j = 0; j < n; j++) {
+                result.data[i][j] = B.data[i][0];
+            }
+        }
+        return result;
     }
-
 
     // return C = A - B
     public Matrix minus(Matrix B) {
@@ -231,7 +245,7 @@ final public class Matrix {
 //        double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3} };
 
         double[][] da = { { 0, 1 }, { 1, 0 }, { 0, 0 }, { 1, 1 }};
-        double[][] db = { { 5 }, { 4 }};
+        double[][] db = { { 5, 3 }, { 4, 2 }};
         double[][] dc = {{1},{1},{1},{1}};
 
 
