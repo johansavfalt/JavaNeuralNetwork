@@ -91,7 +91,6 @@ final public class Matrix {
         Matrix A = this;
         if (B.M != A.M || B.N != A.N) {
             B = getAdjustedMatrix(B, A.N);
-            //throw new RuntimeException("Illegal matrix dimensions.");
         }
         Matrix C = new Matrix(M, N);
         for (int i = 0; i < M; i++)
@@ -101,10 +100,10 @@ final public class Matrix {
     }
 
     private Matrix getAdjustedMatrix(Matrix B,int n) {
-        Matrix result = new Matrix(B.M, n);
-        for (int i = 0; i < B.M; i++) {
+        Matrix result = new Matrix(this.M, n);
+        for (int i = 0; i < this.M; i++) {
             for (int j = 0; j < n; j++) {
-                result.data[i][j] = B.data[i][0];
+                result.data[i][j] = B.data[0][j];
             }
         }
         return result;

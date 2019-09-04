@@ -26,40 +26,28 @@ public class NeuralLayer {
 		this.units = units;
 		this.activation = activation;
 		this.weights = Matrix.random(inputs, units);
-		this.bias = new Matrix(units,1 );
+		this.bias = new Matrix(1 , units);
 		this.bias.fillwith(1);
 	};
 
 
 	private Matrix layer_forward_propagation(Matrix Activation_prev){
 		this.Activation_prev = Activation_prev;
-		System.out.println("activationprev");
-		this.Activation_prev.show();
-		System.out.println("wights");
-		this.weights.show();
-		System.out.println("activationprev * weights");
-		this.Activation_prev.times(this.weights).show();
-		System.out.println("bias");
-		this.bias.show();
-		Matrix result = this.Activation_prev.times(this.weights);
-		System.out.println("activation * weights + bias");
-		result.plus(this.bias).show();
-
-		this.Z_curr = this.Activation_prev.times(this.weights).plus(this.bias).transpose();
+		this.Z_curr = this.Activation_prev.times(this.weights).plus(this.bias);
 		this.Activation_curr = this.Z_curr.applyFunction(activation::activation);
-
 		return this.Activation_curr;
 
 	}
 	
+	
+	
 	public static void main(String[] args) {
 
-		// TODO : something is wrong with the bias dimensions
 		List<NeuralLayer> NeuralNetwork = new ArrayList<NeuralLayer>();
-		NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Relu())); // bias 4,x
-		NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Relu())); // bias 4,x
-		NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Relu())); // bias 2,x this becomes wrong
-		NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid())); // bias 1, x
+		NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Relu()));
+		NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Relu()));
+		NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Relu()));
+		NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
 
 
 		Matrix data = new Matrix(new double[][]{{0, 1}, {1, 0}, {0, 0}, {1, 1}});
@@ -69,6 +57,16 @@ public class NeuralLayer {
 			Matrix layerInput = data;
 			Matrix layerOutput = layer.layer_forward_propagation(layerInput);
 			data = layerOutput;
+		}
+
+
+
+
+		for (int i = NeuralNetwork.size()-1; i >=0 ; i--) {
+			Matrix layerInput = data;
+			Matrix layerOutput = NeuralNetwork.get(i).layer_forward_propagation(layerInput);
+			data = layerOutput;
+
 		}
 
 		
