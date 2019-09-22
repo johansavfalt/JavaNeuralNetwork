@@ -161,6 +161,19 @@ final public class Matrix {
                 for (int k = 0; k < A.N; k++)
                     C.data[i][j] += (A.data[i][k] * B.data[k][j]);
         return C;
+
+
+    }
+
+
+    private Matrix scalarmultiplication(Matrix B) {
+        Matrix C = new Matrix(this.M, this.N);
+        for (int i = 0; i < this.M; i++) {
+            for (int j = 0; j < this.N; j++) {
+                C.data[i][j] = this.data[i][j] * B.data[0][0];
+            }
+        }
+        return C;
     }
 
 
@@ -174,6 +187,7 @@ final public class Matrix {
 
 
     }
+
 
     // return x = A^-1 b, assuming A is square and has full rank
     public Matrix solve(Matrix rhs) {
@@ -305,4 +319,49 @@ final public class Matrix {
 
     }
 
+    public Matrix sum() {
+        double[][] result = {{0.0}};
+        for (int i = 0; i < this.M; i++) {
+            for (int j = 0; j < this.N; j++) {
+                result[0][0] += this.data[i][j];
+            }
+        }
+        return new Matrix(result);
+    }
+
+    public Matrix hadamanproduct(Matrix B) {
+        if (this.M != B.M & this.N != B.N) throw new RuntimeException("Illegal matrix dimensions");
+        Matrix C = new Matrix(M, N);
+        for (int i = 0; i < this.M; i++) {
+            for (int j = 0; j < this.N; j++) {
+                C.data[i][j] = this.data[i][j] * B.data[i][j];
+            }
+        }
+
+        return C;
+    }
+
+    public Matrix product(Matrix B) {
+        if (this.M != B.M & this.N != B.N) throw new RuntimeException("Illegal matrix dimensions");
+        Matrix C = new Matrix(M, N);
+        for (int i = 0; i < this.M; i++) {
+            for (int j = 0; j < this.N; j++) {
+                C.data[i][j] = this.data[i][j] + B.data[i][j];
+            }
+        }
+
+        return C;
+    }
+
+
+    public Matrix timesConstant(double constant) {
+        Matrix C = new Matrix(M, N);
+        for (int i = 0; i < this.M; i++) {
+            for (int j = 0; j < this.N; j++) {
+                C.data[i][j] = this.data[i][j] * constant;
+            }
+        }
+
+        return C;
+    }
 }
