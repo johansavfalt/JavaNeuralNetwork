@@ -5,7 +5,7 @@ import java.util.function.Function;
 final public class Matrix {
     private final int M;             // number of rows
     private final int N;             // number of columns
-    private final double[][] data;   // M-by-N array
+    public final double[][] data;   // M-by-N array
 
     public int getRows() {
         return M;

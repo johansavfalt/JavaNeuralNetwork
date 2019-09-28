@@ -109,7 +109,7 @@ public class Training {
 
         Matrix data = new Matrix(new double[][]{{0, 1}, {1, 0}, {0, 0}, {1, 1}});
         Matrix test = new Matrix(new double[][]{{1}, {1}, {0}, {0}});
-        double learningRate = 0.0001;
+        double learningRate = 0.01;
         int epochs = 50;
 
 
@@ -148,7 +148,7 @@ public class Training {
 
         for (NeuralLayer layer :
                 NeuralNetwork) {
-            layer.updateParameters(0.001);
+            layer.updateParameters(0.01);
         }
     }
 
