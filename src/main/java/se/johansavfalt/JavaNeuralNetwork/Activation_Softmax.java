@@ -4,21 +4,15 @@ public class Activation_Softmax implements ActivationFunction {
 
     @Override
     public Matrix activation(Matrix Z_Matrix) {
-        Matrix exponentMatrix = Z_Matrix.applyFunction(this::exponantiate);
+        double max = Z_Matrix.max().getData()[0][0];
+        Matrix exponentMatrix = Z_Matrix.minusConstant(max);
+        double exponentSumMatrix = exponentMatrix.sum().getData()[0][0];
         Matrix result = new Matrix(Z_Matrix.getRows(), Z_Matrix.getColumns());
-        double exponentSum = 0.0;
-        for (int i = 0; i < exponentMatrix.getRows() ; i++) {
-            for (int j = 0; j < exponentMatrix.getColumns(); j++) {
-                exponentSum += exponentMatrix.data[i][j];
-            }
-        }
-
         for (int i = 0; i < result.getRows() ; i++) {
             for (int j = 0; j < result.getColumns(); j++) {
-                result.data[i][j] += exponentMatrix.data[i][j] / exponentSum;
+                result.data[i][j] += exponentMatrix.data[i][j] / exponentSumMatrix;
             }
         }
-        // http://saitcelebi.com/tut/output/part2.html
 
         return result;
     }

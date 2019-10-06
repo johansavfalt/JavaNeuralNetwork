@@ -329,6 +329,32 @@ final public class Matrix {
         return new Matrix(result);
     }
 
+
+
+    public Matrix exponentSum() {
+        double[][] result = {{0.0}};
+        for (int i = 0; i < this.M; i++) {
+            for (int j = 0; j < this.N; j++) {
+                result[0][0] += Math.exp(this.data[i][j]);
+            }
+        }
+        return new Matrix(result);
+    }
+
+    public Matrix max() {
+        double[][] result = {{0.0}};
+        for (int i = 0; i < this.M; i++) {
+            for (int j = 0; j < this.N; j++) {
+                if(i == 0){
+                    result[0][0] = this.data[i][j];
+                } else if (result[0][0] < this.data[i][j]){
+                    result[0][0] = this.data[i][j];
+                }
+            }
+        }
+        return new Matrix(result);
+    }
+
     public Matrix hadamanproduct(Matrix B) {
         if (this.M != B.M & this.N != B.N) throw new RuntimeException("Illegal matrix dimensions");
         Matrix C = new Matrix(M, N);
