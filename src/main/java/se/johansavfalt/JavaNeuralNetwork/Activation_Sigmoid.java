@@ -2,7 +2,7 @@ package se.johansavfalt.JavaNeuralNetwork;
 
 import java.util.function.Function;
 
-public class Activation_Sigmoid implements ActivationFunction  { //TODO this should implement the activationfunction interface
+public class Activation_Sigmoid implements ActivationFunction  {
 
 
     @Override

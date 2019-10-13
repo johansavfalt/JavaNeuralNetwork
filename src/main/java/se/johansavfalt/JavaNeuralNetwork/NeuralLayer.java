@@ -1,8 +1,5 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class NeuralLayer {
 
@@ -35,7 +32,6 @@ public class NeuralLayer {
 		this.Activation_prev = Activation_prev;
 		this.Z_curr = this.Activation_prev.times(this.weights).plus(this.bias);
 		this.Activation_curr = this.activation.activation(Z_curr);
-		//this.Activation_curr = this.Z_curr.applyFunction(activation::activation);
 		return this.Activation_curr;
 
 	}
@@ -43,25 +39,19 @@ public class NeuralLayer {
 
 	public Matrix layer_backward_propagation(Matrix delta_Aprev) {
 		this.deltaWeights = this.Activation_prev.transpose().times(delta_Aprev);
+
 		for (int i = 0; i < delta_Aprev.getColumns(); i++) {
 			this.deltaBias += delta_Aprev.getData()[0][i];
 		}
 		this.deltaCurr = delta_Aprev.times(this.weights.transpose());
 		this.deltaCurr1 = this.deltaCurr.hadamanproduct(this.activation.activation_derivative(this.Activation_prev));
-		//this.deltaCurr1 = this.deltaCurr.hadamanproduct(this.Activation_prev.applyFunction(activation::activation_derivative));
 		return this.deltaCurr1;
 	}
 
 
-
-	public static void main(String[] args) {
-
-		
-	}
-
 	public void updateParameters(double learningRate) {
 		this.weights = this.weights.product(this.deltaWeights.timesConstant(-learningRate));
-		this.bias = this.bias.timesConstant(this.deltaBias);
+		this.bias = this.bias.timesConstant(this.deltaBias * -learningRate);
 
 	}
 

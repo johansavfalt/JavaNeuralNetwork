@@ -6,6 +6,7 @@ import java.util.List;
 public class Training {
 
 
+    private final Data trainingData;
     private ArrayList<NeuralLayer> NeuralNetwork;
     private Matrix data;
     private double learningRate;
@@ -14,26 +15,29 @@ public class Training {
     private Matrix Y ;
 
 
-    public Training(ArrayList<NeuralLayer> NeuralNetwork, Matrix data, double learningRate, int epochs, Matrix Y){
+    public Training(ArrayList<NeuralLayer> NeuralNetwork, Matrix data, double learningRate, int epochs, Matrix Y,
+    Data trainingData){
         this.NeuralNetwork = NeuralNetwork;
         this.data = data;
         this.learningRate = learningRate;
         this.epochs = epochs;
         this.Y = Y;
+        this.trainingData = trainingData;
 
     }
 
     public void train(){
         for (int i = 0; i < epochs - 1; i++) {
-            Matrix forwardPass = this.forwardPopagation(data);
-            deltaLoss = compute_cross_entropy_loss(forwardPass, this.Y, true);
+            this.trainingData.reshuffledata();
+            Matrix forwardPass = this.forwardPopagation(this.trainingData.getTestdata());
+            deltaLoss = compute_cross_entropy_loss(forwardPass, this.trainingData.getTest(), true);
             this.backwardPropagation(deltaLoss);
             this.updateParameters();
 
-            if(i % 1 == 0){
-                this.forwardPopagation(data);
+            if(i % 10000 == 0){
                 System.out.println(i);
-                this.compute_cross_entropy_loss(this.forwardPopagation(data),this.Y, false).show();
+                compute_cross_entropy_loss(this.forwardPopagation(this.trainingData.getTestdata()),this.trainingData.getTest()
+                        , false).show();
             }
 
         }
@@ -98,58 +102,5 @@ public class Training {
         return result;
     }
 
-    public static void main(String[] args){
-
-        ArrayList<NeuralLayer> NeuralNetwork = new ArrayList<NeuralLayer>();
-        NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Relu()));
-        NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Relu()));
-        NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Relu()));
-        NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
-
-
-        Matrix data = new Matrix(new double[][]{{0, 1}, {1, 0}, {0, 0}, {1, 1}});
-        Matrix test = new Matrix(new double[][]{{1}, {1}, {0}, {0}});
-        double learningRate = 0.01;
-        int epochs = 50;
-
-
-        Training training = new Training(NeuralNetwork, data, learningRate, epochs, test);
-        training.train();
-
-
-
-
-    }
-
-    public void oldMain(){
-        List<NeuralLayer> NeuralNetwork = new ArrayList<NeuralLayer>();
-        NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Relu()));
-        NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Relu()));
-        NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Relu()));
-        NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
-
-
-        Matrix data = new Matrix(new double[][]{{0, 1}, {1, 0}, {0, 0}, {1, 1}});
-        Matrix test = new Matrix(new double[][]{{1}, {1}, {0}, {0}});
-
-        for (NeuralLayer layer : NeuralNetwork) {
-            Matrix layerInput = data;
-            data = layer.layer_forward_propagation(layerInput);
-        }
-
-        Matrix deltaLoss = compute_cross_entropy_loss(data, test, true);
-
-
-        for (int i = NeuralNetwork.size()-1; i >=0 ; i--) {
-            Matrix layerInput = deltaLoss;
-            deltaLoss = NeuralNetwork.get(i).layer_backward_propagation(layerInput);
-
-        }
-
-        for (NeuralLayer layer :
-                NeuralNetwork) {
-            layer.updateParameters(0.01);
-        }
-    }
 
 }
