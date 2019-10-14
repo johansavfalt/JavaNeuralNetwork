@@ -1,5 +1,9 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
+/**
+ * Neural layer class, creates a "layer" with a randomly initialized wieght matrix and bias class and performec
+ * feedforward ,backward propagaton, and updates on them
+ */
 
 public class NeuralLayer {
 
@@ -17,7 +21,12 @@ public class NeuralLayer {
 	private Matrix deltaCurr1;
 	private Matrix deltaCurr2;
 
-
+	/**
+	 *  Contructor, takes matrix dimensions and creates randomly initialized matrices
+	 * @param inputs
+	 * @param units
+	 * @param activation
+	 */
 	public NeuralLayer(int inputs, int units, ActivationFunction activation){
 		this.inputs = inputs;
 		this.units = units;
@@ -27,6 +36,11 @@ public class NeuralLayer {
 		this.bias.fillwith(1);
 	};
 
+	/**
+	 * Forward propagation of the layer
+	 * @param Activation_prev
+	 * @return
+	 */
 
 	public Matrix layer_forward_propagation(Matrix Activation_prev){
 		this.Activation_prev = Activation_prev;
@@ -36,6 +50,11 @@ public class NeuralLayer {
 
 	}
 
+	/**
+	 * Backward propagation of the layer
+	 * @param delta_Aprev
+	 * @return
+	 */
 
 	public Matrix layer_backward_propagation(Matrix delta_Aprev) {
 		this.deltaWeights = this.Activation_prev.transpose().times(delta_Aprev);
@@ -48,7 +67,10 @@ public class NeuralLayer {
 		return this.deltaCurr1;
 	}
 
-
+	/**
+	 * Update parameters of the layer
+	 * @param learningRate
+	 */
 	public void updateParameters(double learningRate) {
 		this.weights = this.weights.product(this.deltaWeights.timesConstant(-learningRate));
 		this.bias = this.bias.timesConstant(this.deltaBias * -learningRate);

@@ -1,5 +1,8 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
+/**
+ * Small class for the data
+ */
 public class Data {
 
 

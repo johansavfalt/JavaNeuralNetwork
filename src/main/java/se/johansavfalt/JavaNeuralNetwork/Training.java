@@ -3,6 +3,9 @@ package se.johansavfalt.JavaNeuralNetwork;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that handles the training of the network (feedforward and backward) , computes the loss and updates the layers
+ */
 public class Training {
 
 
@@ -14,7 +17,16 @@ public class Training {
     private Matrix deltaLoss;
     private Matrix Y ;
 
-
+    /**
+     * Contructor, including the network structure and hyperparameters
+     *
+     * @param NeuralNetwork
+     * @param data
+     * @param learningRate
+     * @param epochs
+     * @param Y
+     * @param trainingData
+     */
     public Training(ArrayList<NeuralLayer> NeuralNetwork, Matrix data, double learningRate, int epochs, Matrix Y,
     Data trainingData){
         this.NeuralNetwork = NeuralNetwork;
@@ -26,6 +38,9 @@ public class Training {
 
     }
 
+    /**
+     * Training
+     */
     public void train(){
         for (int i = 0; i < epochs - 1; i++) {
             this.trainingData.reshuffledata();
@@ -43,11 +58,20 @@ public class Training {
         }
     }
 
+    /**
+     * Updates
+     */
     private void updateParameters() {
         for (NeuralLayer layer : NeuralNetwork) {
             layer.updateParameters(this.learningRate);
         }
     }
+
+    /**
+     * Backward propagation
+     * @param deltaLoss
+     * @return
+     */
 
     private Matrix backwardPropagation(Matrix deltaLoss) {
 
@@ -59,6 +83,11 @@ public class Training {
         return deltaLoss;
     }
 
+    /**
+     * Forward propagation
+     * @param data
+     * @return
+     */
     private Matrix forwardPopagation(Matrix data) {
         for (NeuralLayer layer : NeuralNetwork) {
             Matrix layerInput = data;
@@ -67,7 +96,13 @@ public class Training {
         return data;
     }
 
-
+    /**
+     * Computes Cross-Entropy Loss (Actual or Derivative)
+     * @param data
+     * @param test
+     * @param derivative
+     * @return
+     */
     private static Matrix compute_cross_entropy_loss(Matrix data, Matrix test, boolean derivative) {
         if (derivative){
             return data.minus(test);
@@ -77,6 +112,12 @@ public class Training {
 
     }
 
+    /**
+     * Cross Entropy Value
+     * @param predictDistribution
+     * @param trueDistribution
+     * @return
+     */
     private static Matrix cross_entropy_loss(Matrix predictDistribution, Matrix trueDistribution) {
         double error = 0.0;
         int M = predictDistribution.getRows();
