@@ -1,5 +1,8 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
+import java.util.Collections;
+import java.util.Random;
+
 /**
  * Small class for the data
  */
@@ -23,23 +26,33 @@ public class Data {
         return test;
     }
 
+    void reshuffledata()
+    {
+        int index;
+        double[] temp;
+        Random random = new Random();
 
-    public void reshuffledata() {
-        shuffle(this.testdata);
-        shuffle(this.test);
-    }
+        for (int i = testdata.getRows() - 1; i > 0; i--)
+        {
+            index = random.nextInt(i + 1);
+            temp = testdata.getData()[index];
+            testdata.getData()[index] = testdata.getData()[i];
+            testdata.getData()[i] = temp;
 
-
-
-    private void shuffle(Matrix data) {
-        double[] lastElement = data.getData()[data.getData().length-1];
-
-        for (int i = data.getData().length-1; i > 0 ; --i) {
-            data.getData()[i] = data.getData()[i -1];
+            temp = test.getData()[index];
+            test.getData()[index] = test.getData()[i];
+            test.getData()[i] = temp;
         }
-
-        data.getData()[0] = lastElement;
     }
+
+    public static void main(String[] args) {
+        // Set data, "data" trainingdata and "test" is testdata
+        Matrix data = new Matrix(new double[][]{{0, 1}, {1, 0}, {0, 0}, {1, 1}});
+        Matrix test = new Matrix(new double[][]{{1}, {1}, {0}, {0}});
+        Data trainingData = new Data(data, test);
+        trainingData.reshuffledata();
+    }
+
 
 
 }
