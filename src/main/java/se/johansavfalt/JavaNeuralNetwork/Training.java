@@ -1,5 +1,15 @@
 package se.johansavfalt.JavaNeuralNetwork;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.Plot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RefineryUtilities;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +21,7 @@ public class Training {
 
     private final Data trainingData;
     private final int printResult;
+    private final XYSeries XYSeries;
     private ArrayList<NeuralLayer> NeuralNetwork;
     private double learningRate;
     private int epochs;
@@ -30,6 +41,7 @@ public class Training {
         this.epochs = epochs;
         this.trainingData = trainingData;
         this.printResult = printResult;
+        this.XYSeries = new XYSeries("Data");
 
     }
 
@@ -45,12 +57,36 @@ public class Training {
             this.updateParameters();
 
             if(i % printResult == 0){
-                System.out.println(i);
-                compute_cross_entropy_loss(this.forwardPopagation(this.trainingData.getTestdata()),this.trainingData.getTest()
-                        , false).show();
+                Matrix loss = compute_cross_entropy_loss(this.forwardPopagation(this.trainingData.getTestdata()),this.trainingData.getTest()
+                        , false);
+                XYSeries.add(i,loss.getData()[0][0]);
+
             }
 
         }
+
+        final XYSeriesCollection data = new XYSeriesCollection(XYSeries);
+        final JFreeChart chart = ChartFactory.createXYLineChart(
+                "Trainingloss",
+                "X",
+                "Y",
+                data,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+        );
+
+        final ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
+        ApplicationFrame applicationFrame = new ApplicationFrame("title");
+        applicationFrame.setContentPane(chartPanel);
+        applicationFrame.pack();
+        RefineryUtilities.centerFrameOnScreen(applicationFrame);
+        applicationFrame.setVisible(true);
+
+
+
     }
 
     /**

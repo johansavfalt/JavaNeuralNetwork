@@ -77,11 +77,8 @@ public class NeuralLayer {
 	public void updateParameters(double learningRate) {
 		this.weights = this.weights.product(this.deltaWeights.timesConstant(-learningRate));
 		this.bias = this.bias.product(this.deltaBias.timesConstant(-learningRate));
-//		double delta = this.deltaBias * -learningRate;
-//		Matrix delta_bias = new Matrix(this.bias.getRows(), this.bias.getColumns());
-//		delta_bias.fillwith(delta);
-//		this.bias = this.bias.product(delta_bias);
-//		this.bias = this.bias.timesConstant(this.deltaBias * -learningRate);
+
+		//TODO implement momentum https://engmrk.com/gradient-descent-with-momentum/
 
 	}
 

@@ -37,9 +37,9 @@ public class Prediction {
         Data trainingData = new Data(listData, listDataTest);
 
         // Hyperparameters
-        double learningRate = 0.001;
-        int epochs = 1000;
-        int printResult = 10;
+        double learningRate = 0.0001;
+        int epochs = 100000;
+        int printResult = 1;
 
         // Create TrainingObject
         Training training = new Training(NeuralNetwork, learningRate, epochs, trainingData, printResult);
