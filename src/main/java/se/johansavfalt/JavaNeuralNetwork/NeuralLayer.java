@@ -16,7 +16,7 @@ public class NeuralLayer {
 	private Matrix Z_curr;
 	private ActivationFunction activation;
 	private Matrix deltaWeights;
-	private double deltaBias;
+	private Matrix deltaBias;
 	private Matrix deltaCurr;
 	private Matrix deltaCurr1;
 	private Matrix deltaCurr2;
@@ -33,6 +33,7 @@ public class NeuralLayer {
 		this.activation = activation;
 		this.weights = Matrix.random(inputs, units);
 		this.bias = new Matrix(1 , units);
+		this.deltaBias = new Matrix(1, units);
 		this.bias.fillwith(1);
 	};
 
@@ -58,10 +59,12 @@ public class NeuralLayer {
 
 	public Matrix layer_backward_propagation(Matrix delta_Aprev) {
 		this.deltaWeights = this.Activation_prev.transpose().times(delta_Aprev);
-
+		double sum = 0.0;
 		for (int i = 0; i < delta_Aprev.getColumns(); i++) {
-			this.deltaBias += delta_Aprev.getData()[0][i];
+			sum += delta_Aprev.getData()[0][i];
 		}
+		this.deltaBias.fillwith(sum);
+
 		this.deltaCurr = delta_Aprev.times(this.weights.transpose());
 		this.deltaCurr1 = this.deltaCurr.hadamanproduct(this.activation.activation_derivative(this.Activation_prev));
 		return this.deltaCurr1;
@@ -73,7 +76,12 @@ public class NeuralLayer {
 	 */
 	public void updateParameters(double learningRate) {
 		this.weights = this.weights.product(this.deltaWeights.timesConstant(-learningRate));
-		this.bias = this.bias.timesConstant(this.deltaBias * -learningRate);
+		this.bias = this.bias.product(this.deltaBias.timesConstant(-learningRate));
+//		double delta = this.deltaBias * -learningRate;
+//		Matrix delta_bias = new Matrix(this.bias.getRows(), this.bias.getColumns());
+//		delta_bias.fillwith(delta);
+//		this.bias = this.bias.product(delta_bias);
+//		this.bias = this.bias.timesConstant(this.deltaBias * -learningRate);
 
 	}
 

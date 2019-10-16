@@ -66,6 +66,14 @@ final public class Matrix {
         }
     }
 
+    public void fillwith(double i){
+        for (int j = 0; j < M; j++) {
+            for (int k = 0; k < N; k++) {
+                this.data[j][k] = i;
+            }
+        }
+    }
+
     // return C = A + B
     public Matrix plus(Matrix B) {
         Matrix A = this;

@@ -2,6 +2,7 @@ package se.johansavfalt.JavaNeuralNetwork;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Prediction {
 
@@ -15,16 +16,33 @@ public class Prediction {
         NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
 
         // Set data, "data" trainingdata and "test" is testdata
-        Matrix data = new Matrix(new double[][]{{0, 1}, {1, 0}, {0, 0}, {1, 1}});
-        Matrix test = new Matrix(new double[][]{{1}, {1}, {0}, {0}});
-        Data trainingData = new Data(data, test);
+//        Matrix data = new Matrix(new double[][]{{0, 1}, {1, 0}, {0, 0}, {1, 1}});
+//        Matrix test = new Matrix(new double[][]{{1}, {1}, {0}, {0}});
+
+        List<Matrix> listData = new ArrayList<>();
+        List<Matrix> listDataTest = new ArrayList<>();
+        listData.add(new Matrix(new double[][]{{0, 1}}));
+        listData.add(new Matrix(new double[][]{{1, 0}}));
+        listData.add(new Matrix(new double[][]{{0, 0}}));
+        listData.add(new Matrix(new double[][]{{1, 1}}));
+
+        listDataTest.add(new Matrix(new double[][]{{1}}));
+        listDataTest.add(new Matrix(new double[][]{{1}}));
+        listDataTest.add(new Matrix(new double[][]{{0}}));
+        listDataTest.add(new Matrix(new double[][]{{0}}));
+
+
+
+
+        Data trainingData = new Data(listData, listDataTest);
 
         // Hyperparameters
         double learningRate = 0.001;
-        int epochs = 50000;
+        int epochs = 1000;
+        int printResult = 10;
 
         // Create TrainingObject
-        Training training = new Training(NeuralNetwork, data, learningRate, epochs, test, trainingData);
+        Training training = new Training(NeuralNetwork, learningRate, epochs, trainingData, printResult);
 
         // train model
         training.train();

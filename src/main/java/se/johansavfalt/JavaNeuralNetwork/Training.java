@@ -10,31 +10,26 @@ public class Training {
 
 
     private final Data trainingData;
+    private final int printResult;
     private ArrayList<NeuralLayer> NeuralNetwork;
-    private Matrix data;
     private double learningRate;
     private int epochs;
     private Matrix deltaLoss;
-    private Matrix Y ;
 
     /**
      * Contructor, including the network structure and hyperparameters
-     *
-     * @param NeuralNetwork
-     * @param data
+     *  @param NeuralNetwork
      * @param learningRate
      * @param epochs
-     * @param Y
      * @param trainingData
+     * @param printResult
      */
-    public Training(ArrayList<NeuralLayer> NeuralNetwork, Matrix data, double learningRate, int epochs, Matrix Y,
-    Data trainingData){
+    public Training(ArrayList<NeuralLayer> NeuralNetwork, double learningRate, int epochs, Data trainingData, int printResult){
         this.NeuralNetwork = NeuralNetwork;
-        this.data = data;
         this.learningRate = learningRate;
         this.epochs = epochs;
-        this.Y = Y;
         this.trainingData = trainingData;
+        this.printResult = printResult;
 
     }
 
@@ -43,13 +38,13 @@ public class Training {
      */
     public void train(){
         for (int i = 0; i < epochs - 1; i++) {
-            this.trainingData.reshuffledata();
+            this.trainingData.shuffle();
             Matrix forwardPass = this.forwardPopagation(this.trainingData.getTestdata());
             deltaLoss = compute_cross_entropy_loss(forwardPass, this.trainingData.getTest(), true);
             this.backwardPropagation(deltaLoss);
             this.updateParameters();
 
-            if(i % 10000 == 0){
+            if(i % printResult == 0){
                 System.out.println(i);
                 compute_cross_entropy_loss(this.forwardPopagation(this.trainingData.getTestdata()),this.trainingData.getTest()
                         , false).show();
