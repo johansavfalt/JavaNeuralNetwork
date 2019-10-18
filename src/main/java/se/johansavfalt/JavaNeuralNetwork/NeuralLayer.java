@@ -9,6 +9,7 @@ public class NeuralLayer {
 
 	private final int inputs;
 	private final int units;
+	private Matrix weights_momentum;
 	private Matrix weights;
 	private Matrix bias;
 	private Matrix Activation_prev;
@@ -20,6 +21,7 @@ public class NeuralLayer {
 	private Matrix deltaCurr;
 	private Matrix deltaCurr1;
 	private Matrix deltaCurr2;
+	private Matrix bias_momentum;
 
 	/**
 	 *  Contructor, takes matrix dimensions and creates randomly initialized matrices
@@ -35,6 +37,8 @@ public class NeuralLayer {
 		this.bias = new Matrix(1 , units);
 		this.deltaBias = new Matrix(1, units);
 		this.bias.fillwith(1);
+		this.weights_momentum = new Matrix(inputs, units);
+		this.bias_momentum = new Matrix(1,units);
 	};
 
 	/**
@@ -70,15 +74,21 @@ public class NeuralLayer {
 		return this.deltaCurr1;
 	}
 
+	public void momentum(double beta){
+		weights_momentum = weights_momentum.timesConstant(beta).plus(deltaWeights.timesConstant(1.0-beta));
+		bias_momentum = bias_momentum.timesConstant(beta).plus(deltaBias.timesConstant(1.0-beta));
+	}
+
 	/**
 	 * Update parameters of the layer
 	 * @param learningRate
 	 */
 	public void updateParameters(double learningRate) {
-		this.weights = this.weights.product(this.deltaWeights.timesConstant(-learningRate));
-		this.bias = this.bias.product(this.deltaBias.timesConstant(-learningRate));
 
-		//TODO implement momentum https://engmrk.com/gradient-descent-with-momentum/
+		momentum(0.8);
+		this.weights = this.weights.product(this.weights_momentum.timesConstant(-learningRate));
+		this.bias = this.bias.product(this.bias_momentum.timesConstant(-learningRate));
+
 
 	}
 
