@@ -1,15 +1,17 @@
-package se.johansavfalt.JavaNeuralNetwork;
+package se.johansavfalt.activation;
 
 import java.util.function.Function;
+import se.johansavfalt.utils.Matrix;
 
 /**
- * Relu Activation class, implements Activationfunction interface
+ * Sigmoid activation class, implements Activationfunction interface
  */
-public class Activation_Relu implements ActivationFunction {
+public class Activation_Sigmoid implements ActivationFunction  {
+
     /**
-     * Takes Matrix class and applies Relu on all elements
+     * takes matrix and applies activation function to all its elements
      * @param Z_Matrix
-     * @return Matrix
+     * @return
      */
     @Override
     public Matrix activation(Matrix Z_Matrix) {
@@ -17,9 +19,9 @@ public class Activation_Relu implements ActivationFunction {
     }
 
     /**
-     * Takes Matrix class and applies Relu derivative on all elements
+     * takes matrix and applies activation derivatie to all its elements
      * @param Z_Matrix
-     * @return Matrix
+     * @return
      */
     @Override
     public Matrix activation_derivative(Matrix Z_Matrix) {
@@ -27,29 +29,27 @@ public class Activation_Relu implements ActivationFunction {
     }
 
     /**
-     * Activation
-     * @param x
+     * activation value
+     * @param doubleValue
      * @return
      */
-    public double activate(double x) {
-        return Math.max(x,0.0);
+    public double activate(double doubleValue){
+        return 1 / (1 + Math.pow(Math.E, (-1 * doubleValue)));
     }
 
     /**
-     * Activation Derivative
-     * @param x
+     * activation derivative
+     * @param doubleValue
      * @return
      */
-    public double activate_derivative(double x) {
-        if (x > 0.0){
-            return 1.0;
-        } else {
-            return 0.0;
-        }
+    public double activate_derivative(double doubleValue){
+        double sigVal = activate(doubleValue);
+        return sigVal * (1.0 - sigVal);
+
     }
 
     /**
-     * Applies funciton to all elements of a matrix
+     * Apply function to all the element in a matrix
      * @param func
      * @param Z_Matrix
      * @return
@@ -65,6 +65,7 @@ public class Activation_Relu implements ActivationFunction {
 
 
     }
+
 
 }
 

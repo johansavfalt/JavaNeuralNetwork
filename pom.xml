@@ -19,14 +19,16 @@
             </plugin>
         </plugins>
     </build>
-
     <dependencies>
         <dependency>
             <groupId>jfree</groupId>
             <artifactId>jfreechart</artifactId>
             <version>1.0.9</version>
         </dependency>
-    </dependencies>
-
-    
+     <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13-rc-1</version>
+     </dependency>
+   </dependencies>
 </project>

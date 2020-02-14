@@ -1,4 +1,6 @@
-package se.johansavfalt.JavaNeuralNetwork;
+package se.johansavfalt.activation;
+
+import se.johansavfalt.utils.Matrix;
 
 /**
  * ActivationFunction interface, in order for the layers the easily switch between different activation functions

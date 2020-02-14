@@ -1,4 +1,4 @@
-package se.johansavfalt.JavaNeuralNetwork;
+package se.johansavfalt;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -12,6 +12,8 @@ import org.jfree.ui.RefineryUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.johansavfalt.utils.Matrix;
+import se.johansavfalt.utils.Data;
 
 /**
  * Class that handles the training of the network (feedforward and backward) , computes the loss and updates the layers

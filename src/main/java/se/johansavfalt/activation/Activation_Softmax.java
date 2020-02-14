@@ -1,4 +1,6 @@
-package se.johansavfalt.JavaNeuralNetwork;
+package se.johansavfalt.activation;
+
+import se.johansavfalt.utils.Matrix;
 
 /**
  * Activation softmax implements the activationfunction interface

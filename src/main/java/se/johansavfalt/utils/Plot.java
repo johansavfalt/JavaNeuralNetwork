@@ -1,4 +1,4 @@
-package se.johansavfalt.JavaNeuralNetwork;
+package se.johansavfalt.utils;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;

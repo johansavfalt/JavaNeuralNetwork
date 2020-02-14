@@ -1,16 +1,17 @@
-package se.johansavfalt.JavaNeuralNetwork;
+package se.johansavfalt.activation;
+
+import se.johansavfalt.utils.Matrix;
 
 import java.util.function.Function;
 
 /**
- * Sigmoid activation class, implements Activationfunction interface
+ * Relu Activation class, implements Activationfunction interface
  */
-public class Activation_Sigmoid implements ActivationFunction  {
-
+public class Activation_Relu implements ActivationFunction {
     /**
-     * takes matrix and applies activation function to all its elements
+     * Takes Matrix class and applies Relu on all elements
      * @param Z_Matrix
-     * @return
+     * @return Matrix
      */
     @Override
     public Matrix activation(Matrix Z_Matrix) {
@@ -18,9 +19,9 @@ public class Activation_Sigmoid implements ActivationFunction  {
     }
 
     /**
-     * takes matrix and applies activation derivatie to all its elements
+     * Takes Matrix class and applies Relu derivative on all elements
      * @param Z_Matrix
-     * @return
+     * @return Matrix
      */
     @Override
     public Matrix activation_derivative(Matrix Z_Matrix) {
@@ -28,27 +29,29 @@ public class Activation_Sigmoid implements ActivationFunction  {
     }
 
     /**
-     * activation value
-     * @param doubleValue
+     * Activation
+     * @param x
      * @return
      */
-    public double activate(double doubleValue){
-        return 1 / (1 + Math.pow(Math.E, (-1 * doubleValue)));
+    public double activate(double x) {
+        return Math.max(x,0.0);
     }
 
     /**
-     * activation derivative
-     * @param doubleValue
+     * Activation Derivative
+     * @param x
      * @return
      */
-    public double activate_derivative(double doubleValue){
-        double sigVal = activate(doubleValue);
-        return sigVal * (1.0 - sigVal);
-
+    public double activate_derivative(double x) {
+        if (x > 0.0){
+            return 1.0;
+        } else {
+            return 0.0;
+        }
     }
 
     /**
-     * Apply function to all the element in a matrix
+     * Applies funciton to all elements of a matrix
      * @param func
      * @param Z_Matrix
      * @return
@@ -64,7 +67,6 @@ public class Activation_Sigmoid implements ActivationFunction  {
 
 
     }
-
 
 }
 

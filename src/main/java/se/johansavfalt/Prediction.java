@@ -1,8 +1,11 @@
-package se.johansavfalt.JavaNeuralNetwork;
+package se.johansavfalt;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import se.johansavfalt.activation.Activation_Sigmoid;
+import se.johansavfalt.utils.Matrix;
+import se.johansavfalt.utils.Data;
 
 public class Prediction {
 

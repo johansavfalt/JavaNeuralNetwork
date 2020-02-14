@@ -1,4 +1,4 @@
-package se.johansavfalt.JavaNeuralNetwork;
+package se.johansavfalt.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +32,7 @@ public class Data {
         return nextRandomTestData;
     }
 
-    void shuffle(){
+    public void shuffle(){
         index = random.nextInt(4);
         nextRandomTrainData = (Matrix) testdata.get(index);
         nextRandomTestData = (Matrix) test.get(index);

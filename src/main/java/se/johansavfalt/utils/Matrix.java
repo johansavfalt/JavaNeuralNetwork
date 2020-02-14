@@ -1,4 +1,4 @@
-package se.johansavfalt.JavaNeuralNetwork;
+package se.johansavfalt.utils;
 
 /**
  * Class for handling all the matrix operations. generally all methods takes a matrix as parameter and returns
@@ -141,7 +141,7 @@ final public class Matrix {
         }
         System.out.println();
         System.out.println("M: "+this.M+" N: "+this.N);
-        System.out.println("---------------------------------------");
+        System.out.println("------------------------------------------");
     }
 
     public Matrix sum() {
