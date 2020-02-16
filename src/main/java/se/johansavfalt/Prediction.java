@@ -11,12 +11,16 @@ public class Prediction {
 
     public static void main(String[] args) {
 
+        //TODO: need to try this out
+        NeuralNetwork neuralNetwork = new NeuralNetwork(4, 2, 1, 2, 4,
+                new Activation_Sigmoid(), new Activation_Sigmoid());
+
         // Create NeuralNetwork structure, basically neurallayer object in a ArrayList
         ArrayList<NeuralLayer> NeuralNetwork = new ArrayList<NeuralLayer>();
         NeuralNetwork.add(new NeuralLayer(2,4, new Activation_Sigmoid()));
         NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Sigmoid()));
-        NeuralNetwork.add(new NeuralLayer(4,2, new Activation_Sigmoid()));
-        NeuralNetwork.add(new NeuralLayer(2,1, new Activation_Sigmoid()));
+        NeuralNetwork.add(new NeuralLayer(4,4, new Activation_Sigmoid()));
+        NeuralNetwork.add(new NeuralLayer(4,1, new Activation_Sigmoid()));
 
         // Set data, "data" trainingdata and "test" is testdata
 //        Matrix data = new Matrix(new double[][]{{0, 1}, {1, 0}, {0, 0}, {1, 1}});
