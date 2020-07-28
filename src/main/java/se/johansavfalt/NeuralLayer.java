@@ -67,46 +67,21 @@ public class NeuralLayer {
 		this.deltaBias.fillwith(sum);
 
 		this.deltaCurr = delta_Aprev.times(this.weights.transpose());
-        //TODO should this be a hadamanproduct? i think so
 		this.deltaCurr1 = this.deltaCurr.hadamanproduct(this.activation.activation_derivative(this.Activation_prev));
 		return this.deltaCurr1;
 	}
 
-	public void momentum(double beta){
-		weights_momentum = weights_momentum.timesConstant(beta).plus(deltaWeights.timesConstant(1.0-beta));
-		bias_momentum = bias_momentum.timesConstant(beta).plus(deltaBias.timesConstant(1.0-beta));
-	}
 
 	/**
 	 * Update parameters of the layer
 	 * @param learningRate
 	 */
 	public void updateParameters(double learningRate) {
-
-		momentum(0.8);
-		this.weights = this.weights.product(this.weights_momentum.timesConstant(-learningRate));
-		this.bias = this.bias.product(this.bias_momentum.timesConstant(-learningRate));
-
-
-	}
-
-
-	/**
-	 * Update parameters of the layer
-	 * @param learningRate
-	 */
-    // TODO try with this instead without momentum
-	public void updateParameters_1(double learningRate) {
         Matrix newDeltaWeights = this.deltaWeights.timesConstant(-learningRate);
         Matrix newDeltaBias = this.deltaBias.timesConstant(-learningRate);
 
         this.weights = this.weights.plus(newDeltaWeights);
         this.bias = this.bias.plus(newDeltaBias);
-
-
-		//momentum(0.8);
-		//this.weights = this.weights.product(this.weights_momentum.timesConstant(-learningRate));
-		//this.bias = this.bias.product(this.bias_momentum.timesConstant(-learningRate));
 
 
 	}

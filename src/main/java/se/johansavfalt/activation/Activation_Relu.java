@@ -56,7 +56,7 @@ public class Activation_Relu implements ActivationFunction {
      * @param Z_Matrix
      * @return
      */
-    public Matrix applyFunction(Function<Double,Double> func, Matrix Z_Matrix){
+    private Matrix applyFunction(Function<Double,Double> func, Matrix Z_Matrix){
         int M = Z_Matrix.getRows();
         int N = Z_Matrix.getColumns();
         Matrix C = new Matrix(M, N);

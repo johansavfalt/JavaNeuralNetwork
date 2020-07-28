@@ -31,7 +31,7 @@ public class Training {
 
     /**
      * Contructor, including the network structure and hyperparameters
-     *  @param NeuralNetwork
+     * @param NeuralNetwork
      * @param learningRate
      * @param epochs
      * @param trainingData
@@ -59,9 +59,10 @@ public class Training {
             this.updateParameters();
 
             if(i % printResult == 0){
-                Matrix loss = compute_cross_entropy_loss(this.forwardPopagation(this.trainingData.getTestdata()),this.trainingData.getTest()
-                        , false);
+                Matrix loss = compute_cross_entropy_loss(
+                        this.forwardPopagation(this.trainingData.getTestdata()),this.trainingData.getTest(), false);
                 XYSeries.add(i,loss.getData()[0][0]);
+                System.out.println(loss.getData()[0][0]);
 
             }
 
@@ -136,7 +137,7 @@ public class Training {
      * @param derivative
      * @return
      */
-    private static Matrix compute_cross_entropy_loss(Matrix data, Matrix test, boolean derivative) {
+    public static Matrix compute_cross_entropy_loss(Matrix data, Matrix test, boolean derivative) {
         if (derivative){
             return data.minus(test);
         } else {
@@ -151,14 +152,14 @@ public class Training {
      * @param trueDistribution
      * @return
      */
-    private static Matrix cross_entropy_loss(Matrix predictDistribution, Matrix trueDistribution) {
+    public static Matrix cross_entropy_loss(Matrix predictDistribution, Matrix trueDistribution) {
         double error = 0.0;
         int M = predictDistribution.getRows();
         List<Double> batchResult = new ArrayList<>();
 
 
         for (int i = 0; i < M; i++) {
-            double singleTrue = trueDistribution.getData()[i][0];
+            double singleTrue = trueDistribution.getData()[0][i];
             double singlePred = predictDistribution.getData()[i][0];
 
             if (singleTrue == 1){
