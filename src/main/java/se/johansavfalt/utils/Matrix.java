@@ -100,7 +100,7 @@ final public class Matrix {
     public Matrix minus(Matrix B) {
         Matrix A = this;
         if (B.M != A.M || B.N != A.N) throw new RuntimeException("Illegal matrix dimensions.");
-        Matrix C = new Matrix(M, N);
+            Matrix C = new Matrix(M, N);
         for (int i = 0; i < M; i++)
             for (int j = 0; j < N; j++)
                 C.data[i][j] = A.data[i][j] - B.data[i][j];
@@ -120,16 +120,16 @@ final public class Matrix {
     public Matrix times(Matrix B) {
         Matrix A = this;
         if (A.N != B.M) throw new RuntimeException("Illegal matrix dimensions.");
+
         Matrix C = new Matrix(A.M, B.N);
-        for (int i = 0; i < C.M; i++)
-            for (int j = 0; j < C.N; j++)
+        for (int i = 0; i < A.M; i++)
+            for (int j = 0; j < B.N; j++)
                 for (int k = 0; k < A.N; k++)
                     C.data[i][j] += (A.data[i][k] * B.data[k][j]);
         return C;
 
 
     }
-
 
 
     public void show() {
